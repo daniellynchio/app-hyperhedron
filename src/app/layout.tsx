@@ -13,6 +13,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { KeyboardShortcuts } from "@/components/keyboard-shortcuts";
+import { CreativePrompts } from "@/components/creative-prompts";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,7 +44,7 @@ export default function RootLayout({
           <SidebarProvider>
             <AppSidebar />
             <div className="flex flex-col h-svh">
-              <div className="bg-sidebar p-4 border-r border-b border-sidebar-border">
+              <div className="bg-sidebar p-4 border-r border-b border-sidebar-border rounded-tr-xl rounded-br-xl">
                 <SidebarTrigger className="cursor-pointer" />
               </div>
             </div>
@@ -70,11 +71,12 @@ export default function RootLayout({
               </main>
             </div>
             <div className="flex flex-col h-svh">
-              <div className="bg-sidebar p-4 border-l border-b border-sidebar-border">
+              <div className="bg-sidebar p-4 border-l border-b border-sidebar-border rounded-tl-xl rounded-bl-xl">
                 <ChatTrigger className="cursor-pointer" />
               </div>
-              <div className="flex justify-center p-4">
+              <div className="flex flex-col items-center gap-3 p-4">
                 <KeyboardShortcuts />
+                <CreativePrompts />
               </div>
             </div>
             <ChatDrawer />
