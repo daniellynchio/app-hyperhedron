@@ -4,6 +4,15 @@ import "./globals.css";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { ChatDrawer, ChatProvider, ChatTrigger } from "@/components/chat-drawer";
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { KeyboardShortcuts } from "@/components/keyboard-shortcuts";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,13 +42,41 @@ export default function RootLayout({
         <ChatProvider>
           <SidebarProvider>
             <AppSidebar />
-            <main className="flex-1 overflow-auto">
-              <div className="flex items-center gap-2 p-2">
+            <div className="flex flex-col h-svh">
+              <div className="bg-sidebar p-4 border-r border-b border-sidebar-border">
                 <SidebarTrigger className="cursor-pointer" />
               </div>
-              {children}
-            </main>
-            <ChatTrigger className="self-start m-2" />
+            </div>
+            <div className="flex flex-col flex-1">
+              <header className="flex items-center h-16 px-4">
+                <Breadcrumb>
+                  <BreadcrumbList>
+                    <BreadcrumbItem>
+                      <BreadcrumbLink href="/">Hyperhedron</BreadcrumbLink>
+                    </BreadcrumbItem>
+                    <BreadcrumbSeparator />
+                    <BreadcrumbItem>
+                      <BreadcrumbLink href="/project">Discovery</BreadcrumbLink>
+                    </BreadcrumbItem>
+                    <BreadcrumbSeparator />
+                    <BreadcrumbItem>
+                      <BreadcrumbPage>Research</BreadcrumbPage>
+                    </BreadcrumbItem>
+                  </BreadcrumbList>
+                </Breadcrumb>
+              </header>
+              <main className="flex-1 overflow-auto">
+                {children}
+              </main>
+            </div>
+            <div className="flex flex-col h-svh">
+              <div className="bg-sidebar p-4 border-l border-b border-sidebar-border">
+                <ChatTrigger className="cursor-pointer" />
+              </div>
+              <div className="flex justify-center p-4">
+                <KeyboardShortcuts />
+              </div>
+            </div>
             <ChatDrawer />
           </SidebarProvider>
         </ChatProvider>

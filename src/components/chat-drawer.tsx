@@ -40,7 +40,7 @@ function ChatProvider({ children }: { children: React.ReactNode }) {
 
   React.useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "i" && (event.metaKey || event.ctrlKey)) {
+      if (event.key.toLowerCase() === "i" && event.shiftKey && (event.metaKey || event.ctrlKey)) {
         event.preventDefault();
         toggleChat();
       }
@@ -84,7 +84,7 @@ function ChatPanel({ className, ...props }: React.ComponentProps<"div">) {
     {
       id: "1",
       role: "assistant",
-      content: "Hello! I'm your AI assistant. How can I help you today?",
+      content: "Hi! I'm your AI assistant for Hyperhedron. I can help you run module tasks like Discovery, Research, and Strategy, generate creative concepts and directions, analyze and refine your Creative DNA, write and optimize prompts, and answer questions about your projects.\n\nWhat would you like to work on?",
     },
   ]);
   const [input, setInput] = useState("");
@@ -146,7 +146,7 @@ function ChatPanel({ className, ...props }: React.ComponentProps<"div">) {
           {/* Header */}
           <div className="flex flex-col gap-2 p-2 border-b border-sidebar-border">
             <div className="flex items-center gap-2 px-2 py-2">
-              <span className="font-semibold">AI Assistant</span>
+              <span className="text-lg font-semibold">AI Assistant</span>
             </div>
           </div>
 

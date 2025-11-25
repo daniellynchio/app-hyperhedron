@@ -22,6 +22,7 @@ import {
   CreditCard,
   Scale,
   HelpCircle,
+  Box,
 } from "lucide-react";
 
 import {
@@ -32,6 +33,7 @@ import {
   SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
+  SidebarMenuBadge,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarFooter,
@@ -71,6 +73,7 @@ const workspaceItems = [
     title: "Notifications",
     url: "/notifications",
     icon: Bell,
+    badge: 3,
   },
 ];
 
@@ -83,12 +86,7 @@ const projects = [
   { value: "tesla-launch", label: "Tesla Launch", color: "bg-blue-500" },
 ];
 
-const projectItems = [
-  {
-    title: "Home",
-    url: "/project",
-    icon: Home,
-  },
+const moduleItems = [
   {
     title: "Discovery",
     url: "/project/discovery",
@@ -178,7 +176,7 @@ export function AppSidebar() {
                       </SidebarMenuButton>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
-                      <DropdownMenuItem>Manage</DropdownMenuItem>
+                      <DropdownMenuItem>Workspace Settings</DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>
@@ -187,10 +185,11 @@ export function AppSidebar() {
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <a href={item.url}>
-                      <item.icon className="h-4 w-4" />
+                      <item.icon className="h-4 w-4 opacity-50" />
                       <span>{item.title}</span>
                     </a>
                   </SidebarMenuButton>
+                  {item.badge && <SidebarMenuBadge className="bg-destructive !text-black rounded-full">{item.badge}</SidebarMenuBadge>}
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
@@ -258,16 +257,27 @@ export function AppSidebar() {
                       </SidebarMenuButton>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
-                      <DropdownMenuItem>Manage</DropdownMenuItem>
+                      <DropdownMenuItem>Project Settings</DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>
               </SidebarMenuItem>
-              {projectItems.map((item) => (
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <a href="/project">
+                    <Home className="h-4 w-4 opacity-50" />
+                    <span>Home</span>
+                  </a>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+            <SidebarGroupLabel>Modules</SidebarGroupLabel>
+            <SidebarMenu>
+              {moduleItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <a href={item.url}>
-                      <item.icon className="h-4 w-4" />
+                      <Box className="h-4 w-4 opacity-50" />
                       <span>{item.title}</span>
                     </a>
                   </SidebarMenuButton>
