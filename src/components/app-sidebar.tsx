@@ -3,7 +3,6 @@
 import { useState } from "react";
 import {
   Settings,
-  Hexagon,
   LayoutDashboard,
   Bell,
   ChevronDown,
@@ -23,6 +22,7 @@ import {
   Scale,
   HelpCircle,
   Box,
+  Shapes,
 } from "lucide-react";
 
 import {
@@ -62,11 +62,12 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import { cn } from "@/lib/utils";
+import { Logo } from "@/components/logo";
 
 const workspaceItems = [
   {
     title: "Dashboard",
-    url: "/",
+    url: "/dashboard",
     icon: LayoutDashboard,
   },
   {
@@ -136,7 +137,7 @@ export function AppSidebar() {
     <Sidebar>
       <SidebarHeader>
         <div className="flex items-center gap-2 px-2 py-2">
-          <Hexagon className="h-6 w-6" />
+          <Logo size={24} />
           <span className="text-lg font-semibold">Hyperhedron</span>
         </div>
       </SidebarHeader>
@@ -267,6 +268,14 @@ export function AppSidebar() {
                   <a href="/project">
                     <Home className="h-4 w-4 opacity-50" />
                     <span>Home</span>
+                  </a>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <a href="/project/artifacts">
+                    <Shapes className="h-4 w-4 opacity-50" />
+                    <span>Artifacts</span>
                   </a>
                 </SidebarMenuButton>
               </SidebarMenuItem>

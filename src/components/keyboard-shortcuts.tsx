@@ -26,7 +26,7 @@ export function KeyboardShortcuts() {
           <span className="sr-only">Keyboard shortcuts</span>
         </Button>
       </PopoverTrigger>
-      <PopoverContent align="end" className="w-56">
+      <PopoverContent align="start" className="w-56">
         <div className="space-y-2">
           <p className="text-sm font-medium">Keyboard Shortcuts</p>
           <div className="space-y-1">

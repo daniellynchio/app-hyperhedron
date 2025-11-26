@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { KeyboardShortcuts } from "@/components/keyboard-shortcuts";
 import { CreativePrompts } from "@/components/creative-prompts";
+import { PageControls } from "@/components/page-controls";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -47,9 +48,13 @@ export default function RootLayout({
               <div className="bg-sidebar p-4 border-r border-b border-sidebar-border rounded-tr-xl rounded-br-xl">
                 <SidebarTrigger className="cursor-pointer" />
               </div>
+              <div className="flex flex-col items-center gap-3 px-4 py-8">
+                <KeyboardShortcuts />
+                <CreativePrompts />
+              </div>
             </div>
             <div className="flex flex-col flex-1">
-              <header className="flex items-center h-16 px-4">
+              <header className="flex items-center h-16 px-8">
                 <Breadcrumb>
                   <BreadcrumbList>
                     <BreadcrumbItem>
@@ -74,10 +79,7 @@ export default function RootLayout({
               <div className="bg-sidebar p-4 border-l border-b border-sidebar-border rounded-tl-xl rounded-bl-xl">
                 <ChatTrigger className="cursor-pointer" />
               </div>
-              <div className="flex flex-col items-center gap-3 p-4">
-                <KeyboardShortcuts />
-                <CreativePrompts />
-              </div>
+              <PageControls className="px-4 py-8" />
             </div>
             <ChatDrawer />
           </SidebarProvider>

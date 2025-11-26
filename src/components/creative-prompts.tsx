@@ -10,56 +10,76 @@ import {
 import { Lightbulb, ChevronLeft, ChevronRight } from "lucide-react";
 
 const prompts = [
-  "What if gravity worked in reverse for one day?",
-  "Describe a color that doesn't exist yet.",
-  "What would your life look like if you made the opposite choice 5 years ago?",
-  "Invent a new holiday and its traditions.",
-  "What if animals could vote?",
-  "Design a house for someone who can fly.",
-  "What would music look like if you could see it?",
-  "Create a new emotion and describe how it feels.",
-  "What if dreams were shared experiences?",
-  "Invent a sport that combines three existing ones.",
-  "What would a tree write in its diary?",
-  "Design a city for people who never sleep.",
-  "What if memories were transferable?",
-  "Create a new sense beyond the five we have.",
-  "What would happen if everyone could read minds for an hour?",
-  "Invent a machine that solves an impossible problem.",
-  "What if silence had a texture?",
-  "Design a restaurant where you pay with stories.",
-  "What would art look like made by AI 1000 years from now?",
-  "Create a language with only 10 words.",
-  "What if you could bottle experiences?",
-  "Invent a new form of transportation using only natural forces.",
-  "What would the internet smell like?",
-  "Design a school where failure is celebrated.",
-  "What if time moved differently for each person?",
-  "Create a creature that evolves based on human emotions.",
-  "What would happen if books could talk back?",
-  "Invent a currency based on kindness.",
-  "What if shadows had personalities?",
-  "Design a game where everyone wins differently.",
-  "What would a song written by the ocean sound like?",
-  "Create a map of imaginary places that feel real.",
-  "What if you could taste words?",
-  "Invent a tool that helps people forget selectively.",
-  "What would architecture look like if we lived underwater?",
-  "Design a communication method without words or images.",
-  "What if plants could migrate?",
-  "Create a story told entirely through smells.",
-  "What would happen if everyone's age reset annually?",
-  "Invent a way to measure happiness precisely.",
-  "What if laughter was contagious like a virus?",
-  "Design a museum of things that never existed.",
-  "What would friendship look like as a physical object?",
-  "Create a weather system for indoor spaces.",
-  "What if mistakes left visible marks on the world?",
-  "Invent a device that translates animal thoughts.",
-  "What would a library of the future contain besides books?",
-  "Design an experience that can't be photographed.",
-  "What if your reflection had different opinions?",
-  "Create a ritual for saying goodbye to old ideas.",
+  // Reverse & Invert
+  "List your core assumptions about this problem, then flip each one. What solutions emerge?",
+  "What's the opposite of your current approach? Explore it seriously for 10 minutes.",
+  "If you had to make this worse on purpose, how would you? Now reverse those actions.",
+
+  // Constraints as Catalysts
+  "Remove your biggest resource (time, budget, team). What would you build with half?",
+  "What if this had to ship tomorrow? What's the simplest version that still matters?",
+  "Limit yourself to three features only. Which three actually move the needle?",
+  "What would a 10-year-old understand about this? Simplify until they could explain it.",
+
+  // Perspective Shifts
+  "How would your harshest critic attack this idea? Address their best arguments.",
+  "Describe this project from your end user's Monday morning perspective.",
+  "What would someone from a completely different industry find strange about your approach?",
+  "If you inherited this project tomorrow with fresh eyes, what would you change first?",
+
+  // Analogies & Cross-Pollination
+  "What unrelated field has solved a similar problem? Steal their approach.",
+  "If this were a restaurant, what kind would it be? What does that tell you?",
+  "Find three products you admire. What principle from each could apply here?",
+  "How would nature solve this problem? Look for biological analogies.",
+
+  // Time Travel
+  "Fast-forward 5 years: what will you wish you had done differently today?",
+  "What would the 2030 version of this look like? Work backwards from there.",
+  "What's the decision you keep postponing? That's probably the important one.",
+  "If you had started this a year ago, what would you know now that you don't?",
+
+  // First Principles
+  "Strip away all conventions. What problem are you actually solving?",
+  "Forget how it's 'usually done.' If you started from scratch today, what would you build?",
+  "What's the job-to-be-done here? Focus only on that outcome.",
+  "List everything you're doing out of habit versus intention.",
+
+  // Bad Ideas Welcome
+  "Generate 10 terrible ideas in 5 minutes. Mine them for hidden gems.",
+  "What's the most embarrassingly simple solution? Why aren't you trying it?",
+  "What would you do if you knew you couldn't fail? Now, why not try it anyway?",
+  "What's the 'lazy' solution? Sometimes efficient and lazy are the same thing.",
+
+  // Expand & Contract
+  "If budget were unlimited, what would change? Often the answer reveals priorities.",
+  "What would you cut if forced to reduce scope by 50%? Consider cutting it anyway.",
+  "What's one small bet you could make this week to test your biggest assumption?",
+  "What are you overcomplicating? Find the version that fits on a napkin.",
+
+  // Stakeholder Lens
+  "Who's not in the room that should be? What would they say?",
+  "What does success look like for each stakeholder? Where do they conflict?",
+  "Who will hate this? Understanding resistance often reveals the real issues.",
+  "What would make this so good that customers tell others without being asked?",
+
+  // Reframing
+  "You're framing this as a problem. What if it's actually an opportunity?",
+  "What question are you not asking that might change everything?",
+  "Instead of 'how do we fix this,' ask 'what would make this unnecessary?'",
+  "What are you optimizing for? Is that still the right metric?",
+
+  // Action Bias
+  "What's the smallest experiment you could run in the next hour?",
+  "Stop planning. What's one thing you could ship today to learn something?",
+  "What decision are you avoiding? Make it now with the information you have.",
+  "What would you do if you had to present progress tomorrow morning?",
+
+  // Creative Destruction
+  "What sacred cow needs to be questioned? Every project has one.",
+  "What would you stop doing if you weren't afraid of the reaction?",
+  "Kill your darlings: what are you attached to that isn't serving the work?",
+  "If a competitor copied everything you're doing, what would still make you win?",
 ];
 
 export function CreativePrompts() {
@@ -84,12 +104,12 @@ export function CreativePrompts() {
           className="size-7 cursor-pointer"
         >
           <Lightbulb className="h-4 w-4" />
-          <span className="sr-only">Creative prompts</span>
+          <span className="sr-only">Pattern breakers</span>
         </Button>
       </PopoverTrigger>
-      <PopoverContent align="end" className="w-72">
+      <PopoverContent align="start" className="w-72">
         <div className="space-y-3">
-          <p className="text-sm font-medium">Creative Prompts</p>
+          <p className="text-sm font-medium">Pattern Breakers</p>
           <div className="min-h-[60px] flex items-center">
             <p className="text-sm text-muted-foreground italic">
               "{prompts[currentIndex]}"
