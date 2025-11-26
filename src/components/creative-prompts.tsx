@@ -7,7 +7,12 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Lightbulb, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "@/components/ui/tooltip";
+import { Zap, ChevronLeft, ChevronRight } from "lucide-react";
 
 const prompts = [
   // Reverse & Invert
@@ -97,16 +102,21 @@ export function CreativePrompts() {
 
   return (
     <Popover>
-      <PopoverTrigger asChild>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="size-7 cursor-pointer"
-        >
-          <Lightbulb className="h-4 w-4" />
-          <span className="sr-only">Pattern breakers</span>
-        </Button>
-      </PopoverTrigger>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <PopoverTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="size-7 cursor-pointer"
+            >
+              <Zap className="h-4 w-4" />
+              <span className="sr-only">Pattern breakers</span>
+            </Button>
+          </PopoverTrigger>
+        </TooltipTrigger>
+        <TooltipContent side="right">Pattern breakers</TooltipContent>
+      </Tooltip>
       <PopoverContent align="start" className="w-72">
         <div className="space-y-3">
           <p className="text-sm font-medium">Pattern Breakers</p>

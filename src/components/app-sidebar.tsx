@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useProject, projects } from "@/components/project-context";
 import {
   Settings,
   LayoutDashboard,
@@ -78,14 +79,6 @@ const workspaceItems = [
   },
 ];
 
-const projects = [
-  { value: "hyperhedron", label: "Hyperhedron", color: "bg-rose-500" },
-  { value: "redhat", label: "Redhat", color: "bg-red-500" },
-  { value: "acme-rebrand", label: "Acme Rebrand", color: "bg-amber-500" },
-  { value: "nike-campaign", label: "Nike Campaign", color: "bg-emerald-500" },
-  { value: "spotify-refresh", label: "Spotify Refresh", color: "bg-green-500" },
-  { value: "tesla-launch", label: "Tesla Launch", color: "bg-blue-500" },
-];
 
 const moduleItems = [
   {
@@ -104,7 +97,7 @@ const moduleItems = [
     icon: Target,
   },
   {
-    title: "Concept Development",
+    title: "Mood Board",
     url: "/project/concept",
     icon: Lightbulb,
   },
@@ -126,10 +119,9 @@ const moduleItems = [
 ];
 
 export function AppSidebar() {
-  const [selectedProject, setSelectedProject] = useState("hyperhedron");
+  const { selectedProject, setSelectedProject, selectedProjectData } = useProject();
   const [projectOpen, setProjectOpen] = useState(false);
 
-  const selectedProjectData = projects.find(p => p.value === selectedProject);
   const selectedProjectLabel = selectedProjectData?.label || "Select project";
   const selectedProjectColor = selectedProjectData?.color;
 
@@ -177,7 +169,9 @@ export function AppSidebar() {
                       </SidebarMenuButton>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
-                      <DropdownMenuItem>Workspace Settings</DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <a href="/workspace/settings">Workspace Settings</a>
+                      </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>
@@ -258,7 +252,9 @@ export function AppSidebar() {
                       </SidebarMenuButton>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
-                      <DropdownMenuItem>Project Settings</DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <a href="/project/settings">Project Settings</a>
+                      </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>
@@ -310,21 +306,29 @@ export function AppSidebar() {
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start" className="w-48">
-                <DropdownMenuItem>
-                  <Settings className="h-4 w-4 mr-2" />
-                  Settings
+                <DropdownMenuItem asChild>
+                  <a href="/settings">
+                    <Settings className="h-4 w-4 mr-2" />
+                    Settings
+                  </a>
                 </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <CreditCard className="h-4 w-4 mr-2" />
-                  Subscription
+                <DropdownMenuItem asChild>
+                  <a href="/subscription">
+                    <CreditCard className="h-4 w-4 mr-2" />
+                    Subscription
+                  </a>
                 </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Scale className="h-4 w-4 mr-2" />
-                  Legal
+                <DropdownMenuItem asChild>
+                  <a href="/legal">
+                    <Scale className="h-4 w-4 mr-2" />
+                    Legal
+                  </a>
                 </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <HelpCircle className="h-4 w-4 mr-2" />
-                  Help
+                <DropdownMenuItem asChild>
+                  <a href="/help">
+                    <HelpCircle className="h-4 w-4 mr-2" />
+                    Help
+                  </a>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

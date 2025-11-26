@@ -6,6 +6,11 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "@/components/ui/tooltip";
 import { Command } from "lucide-react";
 
 const shortcuts = [
@@ -16,16 +21,21 @@ const shortcuts = [
 export function KeyboardShortcuts() {
   return (
     <Popover>
-      <PopoverTrigger asChild>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="size-7 cursor-pointer"
-        >
-          <Command className="h-4 w-4" />
-          <span className="sr-only">Keyboard shortcuts</span>
-        </Button>
-      </PopoverTrigger>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <PopoverTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="size-7 cursor-pointer"
+            >
+              <Command className="h-4 w-4" />
+              <span className="sr-only">Keyboard shortcuts</span>
+            </Button>
+          </PopoverTrigger>
+        </TooltipTrigger>
+        <TooltipContent side="right">Keyboard shortcuts</TooltipContent>
+      </Tooltip>
       <PopoverContent align="start" className="w-56">
         <div className="space-y-2">
           <p className="text-sm font-medium">Keyboard Shortcuts</p>

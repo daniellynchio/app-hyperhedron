@@ -4,17 +4,15 @@ import "./globals.css";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { ChatDrawer, ChatProvider, ChatTrigger } from "@/components/chat-drawer";
-import {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+import { AppBreadcrumbs } from "@/components/app-breadcrumbs";
+import { ProjectProvider } from "@/components/project-context";
+import { ProjectIndicator } from "@/components/project-indicator";
 import { KeyboardShortcuts } from "@/components/keyboard-shortcuts";
 import { CreativePrompts } from "@/components/creative-prompts";
+import { FeedbackButton } from "@/components/feedback-button";
+import { TutorialButton } from "@/components/tutorial-button";
 import { PageControls } from "@/components/page-controls";
+import { ModalProvider, GlobalModal } from "@/components/modal";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,6 +39,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-full overflow-hidden`}
       >
+        <ModalProvider>
+        <ProjectProvider>
         <ChatProvider>
           <SidebarProvider>
             <AppSidebar />
@@ -49,27 +49,17 @@ export default function RootLayout({
                 <SidebarTrigger className="cursor-pointer" />
               </div>
               <div className="flex flex-col items-center gap-3 px-4 py-8">
+                <TutorialButton />
                 <KeyboardShortcuts />
                 <CreativePrompts />
+                <FeedbackButton />
               </div>
             </div>
             <div className="flex flex-col flex-1">
-              <header className="flex items-center h-16 px-8">
-                <Breadcrumb>
-                  <BreadcrumbList>
-                    <BreadcrumbItem>
-                      <BreadcrumbLink href="/">Hyperhedron</BreadcrumbLink>
-                    </BreadcrumbItem>
-                    <BreadcrumbSeparator />
-                    <BreadcrumbItem>
-                      <BreadcrumbLink href="/project">Discovery</BreadcrumbLink>
-                    </BreadcrumbItem>
-                    <BreadcrumbSeparator />
-                    <BreadcrumbItem>
-                      <BreadcrumbPage>Research</BreadcrumbPage>
-                    </BreadcrumbItem>
-                  </BreadcrumbList>
-                </Breadcrumb>
+              <header className="flex items-center gap-4 h-16 px-8">
+                <ProjectIndicator />
+                <span className="text-muted-foreground">/</span>
+                <AppBreadcrumbs />
               </header>
               <main className="flex-1 overflow-auto">
                 {children}
@@ -82,8 +72,11 @@ export default function RootLayout({
               <PageControls className="px-4 py-8" />
             </div>
             <ChatDrawer />
+            <GlobalModal />
           </SidebarProvider>
         </ChatProvider>
+        </ProjectProvider>
+        </ModalProvider>
       </body>
     </html>
   );

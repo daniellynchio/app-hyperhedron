@@ -1,6 +1,6 @@
 "use client";
 
-import { Save, Copy, Download } from "lucide-react";
+import { Save, Copy, Download, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
 import {
@@ -24,6 +24,7 @@ const defaultButtons: PageControlButton[] = [
   { icon: <Save className="size-4" />, label: "Save" },
   { icon: <Copy className="size-4" />, label: "Copy" },
   { icon: <Download className="size-4" />, label: "Download" },
+  { icon: <MessageSquare className="size-4" />, label: "Comments" },
 ];
 
 export function PageControls({
